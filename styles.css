@@ -19,9 +19,11 @@
 }
 
 .position {
+    position: center;
+    margin: %;
     height: 85px;
     width: 85px;
-    background-color: black;
+    background-color: rgb(226, 5, 226);
     border: 1px solid black;
     border-radius: 50%;
 }
@@ -48,11 +50,11 @@ button {
 }
 
 table {
-    background-color: white;
+    background: black;
     position: relative;
     width: 645px;
     height: 590px% ;
-    margin: 10% auto;
+    margin: 0% auto;
 
 }
 
