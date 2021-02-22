@@ -1,80 +1,55 @@
-/* * {
-
+body, html{
     margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-} */
-
-.game-area {
-    position: absolute;
-    /* top: 4rem; */
-    left: 50%;
-    transform: translate(-50%);
-    width: 625px;
-    height: 580px;
-    border: 10px solid black;
-    background: gold;
-    /* box-shadow: 15px 10px #14213d; */
-    border-radius: 3%;
-    padding: 10px;
-}
-
-.position {
-    position: center;
-    margin: 0% auto;
-    height: 80px;
-    width: 80px;
-    background-color: whitesmoke;
-    border: 5px solid black;
+  }
+  
+  .column{
+    display: inline-block;
+    background-color: black;;
+  }
+  
+  .pos{
+    width: 95px;
+    height: 95px;
     border-radius: 50%;
-}
-
-table {
-    background: black;
-    position: absolute;
-    width: 623px;
-    height: 560px;
-    margin: 0% auto;
-
-}
-
-body {
-    position: relative;
     background: whitesmoke;
-    height: 100vh;
-}
+    margin: 10px;
+    cursor: pointer;
+  }
 
-.header {
-
-
-}
+  .pos:hover {
+    background-color: red;
+  }
+  
+  
+  .board{
+      position: absolute;
+      top: 100px;
+      left: 250px;
+    font-size: 0;
+    border: solid black 10px;
+    border-radius: 2%;
+    box-shadow: 20px grey;
+  }
 
 h1 {
-    
-    /* font-weight: bolder; */
     text-align: center;
+    border: 5px solid red;
+    background-color: rgb(241, 35, 35);
    
 }
 
-
-
-.button-area {
-    display: inline-block;
-    height: 100px;
-    top: 90vh;
-    left: 50%;
-    transform: translate(-50%);
-    border: 10px solid black;
-    background: black;
-
-}
-.button {
+.start {
     position: absolute;
     bottom: 0px;
-    color:blue;
+    left: 10vh;
+    color:black;
+    background: red;
     width: 3rem;
     display: inline-block;
     margin-bottom: 26px;
+    cursor: pointer;
+    border: 3px solid rgb(223, 29, 29);
+    border-radius: 20%;
 }
 
 .player-1{
