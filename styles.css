@@ -20,6 +20,15 @@ body, html{
     background-color: red;
   }
   
+  .game-area{
+    /* position: absolute; */
+    top: 100px;
+    left: 250px;
+    display: flex;
+    flex-wrap: wrap;
+  font-size: 0;
+  border: solid black 10px;
+  }
   
   .board{
       position: absolute;
@@ -52,6 +61,7 @@ h1 {
     cursor: pointer;
     border: 3px solid rgb(223, 29, 29);
     border-radius: 20%;
+    padding: 5px;
 }
 
 .player-1{
@@ -63,7 +73,7 @@ h1 {
 }
 
 .player-2{
-    margin-left: 35%;
+    margin-left: 40%;
     text-align: right;
     display: inline-block;
 

@@ -1,8 +1,9 @@
 // constants
 
-// Board
+//-------- Board elements --------//
+
 const columnEls = document.querySelectorAll('.column');
-const positions = document.getElementsByClassName('pos');
+const positions = document.getElementsByClassName('.pos');
 const playerOne = document.querySelector('.player-1');
 const playerTwo = document.querySelector('.player-2');
 const playAgain = document.querySelector('.start');
@@ -36,8 +37,8 @@ let winningCombos = [
 console.log(positions);
 
 const players = {
-
-
+    playerOne: '',
+    playerTwo: ''
 }
 
 
@@ -45,7 +46,27 @@ const players = {
 let gameTokens = [];
 
 
-// Init
+//--------- Initialize the game ---------//
+function loadPage() {
+    let startGame = function init() {
+        console.log('Start the game');
+    }
+    playAgain.addEventListener('click', startGame);
+
+    while (!playerOne) {
+        let playerOne = prompt('Enter Player 1.')
+    }
+
+    playerOnecolor = 'red';
+
+    while (!playerTwo) {
+        let playerTwo = prompt('Enter Player 2.')
+    }
+
+    playerTwoColor = 'yellow';
+}
+loadPage();
+
 
 init();
 
@@ -65,20 +86,5 @@ function init() {
 }
 console.log(init)
 
-let startGame = function init() {
-    console.log('Start the game');
-}
-playAgain.addEventListener('click', startGame);
 
-while (!playerOne) {
-    let playerOne = prompt('Enter Player 1.')
-}
-
-playerOnecolor = 'red';
-
-while (!playerTwo) {
-    let playerTwo = prompt('Enter Player 2.')
-}
-
-playerTwoColor = 'yellow';
 
