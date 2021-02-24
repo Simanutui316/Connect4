@@ -32,12 +32,8 @@ let winningCombos = [
     [8, 15, 22, 29], [9, 16, 23, 30], [10, 17, 24, 31],
     [11, 18, 25, 32], [12, 19, 26, 33], [13, 20, 27, 34]
 ];
-const players = {
-    '1': [''],
-    '-1': ['']
 
-}
-let currentPlayer = 1;
+let currentPlayer = -1;
 let gameTokens = [];
 let playerOne, playerTwo, playerTwoColor, playerOnecolor;
 
@@ -70,31 +66,25 @@ function loadPage() {
     playerTwoColor = 'yellow';
 
 
+
 }
 loadPage();
+
+
+
 
 
 // init();
 
 function init() {
-    columnEls.forEach(function (column) {
+    console.log(init);
 
-        gameTokens.push([]);
-
-        column.addEventListener('click', function (e) {
-            if (e.target.className === 'column') {
-                e.target.style.backgroundColor = 'red';
-            } else {
-                e.target.parentElement.style.backgroundColor = 'yellow';
-            };
-        });
-    });
 }
-console.log(loadPage);
 
-//--------Event Listeners-----//
+// function reset(loadPage) {
+//     playAgain.addEventListener('click', clearPage){
+//         positions.style.background = 'white';
+//     }
 
-// function selection() {
-//     positions.addEventListener('click', function (e)
 // }
-
+// reset();
