@@ -59,6 +59,7 @@ boardEl.addEventListener('click', function (e) {
     board[row][column] = currentPlayer
     currentPlayer *= -1;
     console.log(board);
+    render()
 })
 
 
@@ -89,7 +90,19 @@ function loadPage() {
 }
 // loadPage();
 
-
+function render() {
+    board.forEach(function (column, i) {
+        column.forEach(function (row, j) {
+            if (board[i][j] == 1) {
+                let idx = i * 7 + j;
+                document.getElementById(`${idx}`).style.backgroundColor = 'green';
+            } else if (board[i][j] == -1) {
+                let idx = i * 7 + j;
+                document.getElementById(`${idx}`).style.backgroundColor = 'yellow';
+            }
+        })
+    })
+}
 
 
 
