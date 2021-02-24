@@ -1,7 +1,7 @@
 // constants
 
 //-------- Board elements --------//
-
+const boardEl = document.querySelector('.board')
 const columnEls = document.querySelectorAll('.column');
 const positions = document.getElementsByClassName('.pos');
 const playerOneEl = document.querySelector('#player-1');
@@ -36,11 +36,30 @@ let winningCombos = [
 let currentPlayer = -1;
 let gameTokens = [];
 let playerOne, playerTwo, playerTwoColor, playerOnecolor;
-
+let board = [
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+]
 console.log(currentPlayer);
 
 
-
+boardEl.addEventListener('click', function (e) {
+    if (e.target.className !== 'pos') {
+        return
+    }
+    console.log(e.target.id)
+    let row = Math.floor(parseInt(e.target.id) / 7);
+    console.log(row);
+    let column = parseInt(e.target.id) % 7;
+    console.log(column);
+    board[row][column] = currentPlayer
+    currentPlayer *= -1;
+    console.log(board);
+})
 
 
 
@@ -68,7 +87,7 @@ function loadPage() {
 
 
 }
-loadPage();
+// loadPage();
 
 
 
