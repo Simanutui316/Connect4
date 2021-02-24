@@ -4,8 +4,8 @@
 
 const columnEls = document.querySelectorAll('.column');
 const positions = document.getElementsByClassName('.pos');
-const playerOne = document.querySelector('.player-1');
-const playerTwo = document.querySelector('.player-2');
+const playerOneEl = document.querySelector('#player-1');
+const playerTwoEl = document.querySelector('#player-2');
 const playAgain = document.querySelector('.start');
 let winningCombos = [
     [0, 1, 2, 3], [41, 40, 39, 38], [7, 8, 9, 10],
@@ -32,18 +32,21 @@ let winningCombos = [
     [8, 15, 22, 29], [9, 16, 23, 30], [10, 17, 24, 31],
     [11, 18, 25, 32], [12, 19, 26, 33], [13, 20, 27, 34]
 ];
-
-
-console.log(positions);
-
 const players = {
-    playerOne: '',
-    playerTwo: ''
+    '1': [''],
+    '-1': ['']
+
 }
-
-
-
+let currentPlayer = 1;
 let gameTokens = [];
+let playerOne, playerTwo, playerTwoColor, playerOnecolor;
+
+console.log(currentPlayer);
+
+
+
+
+
 
 
 //--------- Initialize the game ---------//
@@ -51,24 +54,27 @@ function loadPage() {
     let startGame = function init() {
         console.log('Start the game');
     }
-    playAgain.addEventListener('click', startGame);
 
-    while (!playerOne) {
-        let playerOne = prompt('Enter Player 1.')
+    playAgain.addEventListener('click', startGame);
+    if (!playerOne) {
+        playerOne = prompt('Enter Player 1. RED');
+        playerOneEl.textContent = playerOne;
+    }
+    if (!playerTwo) {
+        playerTwo = prompt('Enter Player 2. YELLOW');
+        playerTwoEl.textContent = playerTwo;
+
     }
 
     playerOnecolor = 'red';
-
-    while (!playerTwo) {
-        let playerTwo = prompt('Enter Player 2.')
-    }
-
     playerTwoColor = 'yellow';
+
+
 }
 loadPage();
 
 
-init();
+// init();
 
 function init() {
     columnEls.forEach(function (column) {
@@ -84,7 +90,11 @@ function init() {
         });
     });
 }
-console.log(init)
+console.log(loadPage);
 
+//--------Event Listeners-----//
 
+// function selection() {
+//     positions.addEventListener('click', function (e)
+// }
 
