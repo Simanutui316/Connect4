@@ -47,20 +47,77 @@ let board = [
 console.log(currentPlayer);
 
 
+
+
 boardEl.addEventListener('click', function (e) {
     if (e.target.className !== 'pos') {
         return
     }
-    console.log(e.target.id)
-    let row = Math.floor(parseInt(e.target.id) / 7);
-    console.log(row);
+    // console.log(e.target.id)
+    let row
+    // console.log(row);
     let column = parseInt(e.target.id) % 7;
-    console.log(column);
+    // console.log(column);
+
+    // row that is the most bottom that is zero
+    for (let i = board.length - 1; i >= 0; i--) {
+        if (board[i][column] === 0) {
+            row = i
+            break
+        }
+    }
+
+
     board[row][column] = currentPlayer
     currentPlayer *= -1;
-    console.log(board);
+    // console.log(board);
     render()
 })
+
+function takeSpace(e) {
+    if (e.target.className !== 'pos') {
+        return
+    }
+    console.log('this is e ', e.target)
+    let click = parseInt(e.target.id);
+    let bottomSpace = click % 7 + 35;
+    let secondSpace = click % 7 + 28;
+    let thirdSpace = click % 7 + 21;
+    let fourthSpace = click % 7 + 14;
+    let fifthSpace = click % 7 + 7;
+    let topSpace = click % 7;
+
+    if (board[Math.floor(bottomSpace / 7)][bottomSpace % 7] == 0) {
+        board[Math.floor(bottomSpace / 7)][bottomSpace % 7] = 1;
+    } else if (grid[Math.floor(secondSpace / 7)][secondSpace % 7] == 0) {
+        board[Math.floor(secondSpace / 7)][secondSpace % 7] = 1;
+    } else if (grid[Math.floor(thirdSpace / 7)][thirdSpace % 7] == 0) {
+        board[Math.floor(thirdSpace / 7)][thirdSpace % 7] = 1;
+    } else if (grid[Math.floor(fourthSpace / 7)][fourthSpace % 7] == 0) {
+        board[Math.floor(fourthSpace / 7)][fourthSpace % 7] = 1;
+    } else if (grid[Math.floor(fifthSpace / 7)][fifthSpace % 7] == 0) {
+        board[Math.floor(fifthSpace / 7)][fifthSpace % 7] = 1;
+    } else if (grid[Math.floor(topSpace / 7)][topSpace % 7] == 0) {
+        board[Math.floor(topSpace / 7)][topSpace % 7] = 1;
+    } else {
+        alert('TAKEN!')
+    }
+    console.log(board);
+
+    // function changeColor(e) {
+    //     let column = e.target.columnEls;
+    //     let row = [];
+
+    //     for (let i = 5; i > -1; i--) {
+    //         if (positions[i].children[column].style.backgroundColor == 'whitesmoke') {
+    //             row.push(positions[i].children[column]);
+    //             if (currentPlayer === 1) {
+    //                 row[0].style.backgroundColor = playerOnecolor;
+    //             }
+    //         }
+    //     }
+    // }
+}
 
 
 
@@ -88,14 +145,14 @@ function loadPage() {
 
 
 }
-// loadPage();
+loadPage();
 
 function render() {
     board.forEach(function (column, i) {
         column.forEach(function (row, j) {
             if (board[i][j] == 1) {
                 let idx = i * 7 + j;
-                document.getElementById(`${idx}`).style.backgroundColor = 'green';
+                document.getElementById(`${idx}`).style.backgroundColor = 'red';
             } else if (board[i][j] == -1) {
                 let idx = i * 7 + j;
                 document.getElementById(`${idx}`).style.backgroundColor = 'yellow';
@@ -103,20 +160,8 @@ function render() {
         })
     })
 }
+render();
 
 
 
-// init();
 
-function init() {
-    console.log(init);
-
-}
-
-// function reset(loadPage) {
-//     playAgain.addEventListener('click', clearPage){
-//         positions.style.background = 'white';
-//     }
-
-// }
-// reset();
