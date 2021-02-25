@@ -70,54 +70,54 @@ boardEl.addEventListener('click', function (e) {
 
     board[row][column] = currentPlayer
     currentPlayer *= -1;
-    // console.log(board);
+    console.log(board);
     render()
 })
 
-function takeSpace(e) {
-    if (e.target.className !== 'pos') {
-        return
-    }
-    console.log('this is e ', e.target)
-    let click = parseInt(e.target.id);
-    let bottomSpace = click % 7 + 35;
-    let secondSpace = click % 7 + 28;
-    let thirdSpace = click % 7 + 21;
-    let fourthSpace = click % 7 + 14;
-    let fifthSpace = click % 7 + 7;
-    let topSpace = click % 7;
+// function takeSpace(e) {
+//     if (e.target.className !== 'pos') {
+//         return
+//     }
+//     console.log('this is e ', e.target)
+//     let click = parseInt(e.target.id);
+//     let bottomSpace = click % 7 + 35;
+//     let secondSpace = click % 7 + 28;
+//     let thirdSpace = click % 7 + 21;
+//     let fourthSpace = click % 7 + 14;
+//     let fifthSpace = click % 7 + 7;
+//     let topSpace = click % 7;
 
-    if (board[Math.floor(bottomSpace / 7)][bottomSpace % 7] == 0) {
-        board[Math.floor(bottomSpace / 7)][bottomSpace % 7] = 1;
-    } else if (grid[Math.floor(secondSpace / 7)][secondSpace % 7] == 0) {
-        board[Math.floor(secondSpace / 7)][secondSpace % 7] = 1;
-    } else if (grid[Math.floor(thirdSpace / 7)][thirdSpace % 7] == 0) {
-        board[Math.floor(thirdSpace / 7)][thirdSpace % 7] = 1;
-    } else if (grid[Math.floor(fourthSpace / 7)][fourthSpace % 7] == 0) {
-        board[Math.floor(fourthSpace / 7)][fourthSpace % 7] = 1;
-    } else if (grid[Math.floor(fifthSpace / 7)][fifthSpace % 7] == 0) {
-        board[Math.floor(fifthSpace / 7)][fifthSpace % 7] = 1;
-    } else if (grid[Math.floor(topSpace / 7)][topSpace % 7] == 0) {
-        board[Math.floor(topSpace / 7)][topSpace % 7] = 1;
-    } else {
-        alert('TAKEN!')
-    }
-    console.log(board);
+//     if (board[Math.floor(bottomSpace / 7)][bottomSpace % 7] == 0) {
+//         board[Math.floor(bottomSpace / 7)][bottomSpace % 7] = 1;
+//     } else if (grid[Math.floor(secondSpace / 7)][secondSpace % 7] == 0) {
+//         board[Math.floor(secondSpace / 7)][secondSpace % 7] = 1;
+//     } else if (grid[Math.floor(thirdSpace / 7)][thirdSpace % 7] == 0) {
+//         board[Math.floor(thirdSpace / 7)][thirdSpace % 7] = 1;
+//     } else if (grid[Math.floor(fourthSpace / 7)][fourthSpace % 7] == 0) {
+//         board[Math.floor(fourthSpace / 7)][fourthSpace % 7] = 1;
+//     } else if (grid[Math.floor(fifthSpace / 7)][fifthSpace % 7] == 0) {
+//         board[Math.floor(fifthSpace / 7)][fifthSpace % 7] = 1;
+//     } else if (grid[Math.floor(topSpace / 7)][topSpace % 7] == 0) {
+//         board[Math.floor(topSpace / 7)][topSpace % 7] = 1;
+//     } else {
+//         alert('TAKEN!')
+//     }
+//     console.log(board);
 
-    // function changeColor(e) {
-    //     let column = e.target.columnEls;
-    //     let row = [];
+//     function changeColor(e) {
+//         let column = e.target.columnEls;
+//         let row = [];
 
-    //     for (let i = 5; i > -1; i--) {
-    //         if (positions[i].children[column].style.backgroundColor == 'whitesmoke') {
-    //             row.push(positions[i].children[column]);
-    //             if (currentPlayer === 1) {
-    //                 row[0].style.backgroundColor = playerOnecolor;
-    //             }
-    //         }
-    //     }
-    // }
-}
+//         for (let i = 5; i > -1; i--) {
+//             if (positions[i].children[column].style.backgroundColor == 'whitesmoke') {
+//                 row.push(positions[i].children[column]);
+//                 if (currentPlayer === 1) {
+//                     row[0].style.backgroundColor = playerOnecolor;
+//                 }
+//             }
+//         }
+//     }
+// }
 
 
 
@@ -162,6 +162,34 @@ function render() {
 }
 render();
 
+// function findWinner() {
+//     let squares = document.querySelectorAll('.pos');
+//     for (let i = 0; i < winningCombos.length; i++) {
+//         let square = winningCombos[i];
+//         if (square.every((e) => squares[e].contains('player-1'))) {
+//             alert(`${playerOne} has won`)
+//         } else if (
+//             square.every((e) => squares[e].contains('player-2'))
+//         ) {
+//             alert(`${playerTwo} has won`)
+
+//         }
+//     }
+// } console.log(findWinner);
+// findWinner();
+
+startGame.addEventListener('click') function reset() {
+    let newBoard = [
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+    ]
+    board.push(newBoard);
+    return (loadPage);
+})
 
 
-
+reset();
