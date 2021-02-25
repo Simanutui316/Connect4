@@ -33,7 +33,7 @@ let winningCombos = [
     [11, 18, 25, 32], [12, 19, 26, 33], [13, 20, 27, 34]
 ];
 
-let currentPlayer = -1;
+let currentPlayer = 1;
 let gameTokens = [];
 let playerOne, playerTwo, playerTwoColor, playerOnecolor;
 let board = [
@@ -125,7 +125,7 @@ boardEl.addEventListener('click', function (e) {
 //--------- Initialize the game ---------//
 function loadPage() {
     let startGame = function init() {
-        console.log('Start the game');
+
     }
 
     playAgain.addEventListener('click', startGame);
@@ -142,10 +142,21 @@ function loadPage() {
     playerOnecolor = 'red';
     playerTwoColor = 'yellow';
 
-
-
 }
 loadPage();
+
+function init() {
+    board = [
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+    ];
+
+    render();
+}
 
 function render() {
     board.forEach(function (column, i) {
@@ -156,29 +167,17 @@ function render() {
             } else if (board[i][j] == -1) {
                 let idx = i * 7 + j;
                 document.getElementById(`${idx}`).style.backgroundColor = 'yellow';
+            } else if (board[i][j] == 0) {
+                let idx = i * 7 + j;
+                document.getElementById(`${idx}`).style.backgroundColor = 'white';
             }
         })
     })
 }
 render();
 
-// function findWinner() {
-//     let squares = document.querySelectorAll('.pos');
-//     for (let i = 0; i < winningCombos.length; i++) {
-//         let square = winningCombos[i];
-//         if (square.every((e) => squares[e].contains('player-1'))) {
-//             alert(`${playerOne} has won`)
-//         } else if (
-//             square.every((e) => squares[e].contains('player-2'))
-//         ) {
-//             alert(`${playerTwo} has won`)
 
-//         }
-//     }
-// } console.log(findWinner);
-// findWinner();
-
-playAgain.addEventListener('click', function reset() {
+boardEl.addEventListener('click', function init() {
     let newBoard = [
         [0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0],
@@ -186,9 +185,9 @@ playAgain.addEventListener('click', function reset() {
         [0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0],
-    ]
-    board.push(newBoard);
-    return (loadPage);
+    ]; {
+        board.push(newBoard);
+    }
 })
 
 
@@ -200,7 +199,7 @@ function chkLine(a, b, c, d) {
 
 function chkWinner(bd) {
     // Check down
-    for (r = 0; r < 3; r++)
+    for (row = 0; row < 3; row++)
         for (c = 0; c < 7; c++)
             if (chkLine(bd[r][c], bd[r + 1][c], bd[r + 2][c], bd[r + 3][c]))
                 return bd[r][c];
@@ -223,5 +222,24 @@ function chkWinner(bd) {
             if (chkLine(bd[r][c], bd[r - 1][c + 1], bd[r - 2][c + 2], bd[r - 3][c + 3]))
                 return bd[r][c];
 
-    return 0;
+    console.log(chkWinner);
 }
+
+// alert(chkWinner(winningCombos));
+
+
+// function findWinner() {
+//     let squares = document.querySelectorAll('#pos');
+//     for (let i = 0; i < winningCombos.length; i++) {
+//         let square = winningCombos[i];
+//         if (square.every((e) => squares[e].contains('playerOneEl'))) {
+//             alert(`${playerOne} has won`)
+//         } else if (
+//             square.every((e) => squares[e].contains('playerTwoEl'))
+//         ) {
+//             alert(`${playerTwo} has won`)
+
+//         }
+//     }
+// } console.log(findWinner);
+// findWinner();
