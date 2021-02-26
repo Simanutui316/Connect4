@@ -66,58 +66,26 @@ boardEl.addEventListener('click', function (e) {
             break
         }
     }
-
+    let playerName;
+    if (currentPlayer == 1) {
+        playerName = playerOneEl.textContent
+    } else {
+        playerName = playerTwoEl.textContent
+    }
 
     board[row][column] = currentPlayer
     currentPlayer *= -1;
-    console.log(board);
     render()
+    let winner = chkWinner(board)
+    if (winner == 1 || winner == -1) {
+
+        alert(`${playerName} has won!`);
+    }
+    console.log()
+
 })
 
-// function takeSpace(e) {
-//     if (e.target.className !== 'pos') {
-//         return
-//     }
-//     console.log('this is e ', e.target)
-//     let click = parseInt(e.target.id);
-//     let bottomSpace = click % 7 + 35;
-//     let secondSpace = click % 7 + 28;
-//     let thirdSpace = click % 7 + 21;
-//     let fourthSpace = click % 7 + 14;
-//     let fifthSpace = click % 7 + 7;
-//     let topSpace = click % 7;
 
-//     if (board[Math.floor(bottomSpace / 7)][bottomSpace % 7] == 0) {
-//         board[Math.floor(bottomSpace / 7)][bottomSpace % 7] = 1;
-//     } else if (grid[Math.floor(secondSpace / 7)][secondSpace % 7] == 0) {
-//         board[Math.floor(secondSpace / 7)][secondSpace % 7] = 1;
-//     } else if (grid[Math.floor(thirdSpace / 7)][thirdSpace % 7] == 0) {
-//         board[Math.floor(thirdSpace / 7)][thirdSpace % 7] = 1;
-//     } else if (grid[Math.floor(fourthSpace / 7)][fourthSpace % 7] == 0) {
-//         board[Math.floor(fourthSpace / 7)][fourthSpace % 7] = 1;
-//     } else if (grid[Math.floor(fifthSpace / 7)][fifthSpace % 7] == 0) {
-//         board[Math.floor(fifthSpace / 7)][fifthSpace % 7] = 1;
-//     } else if (grid[Math.floor(topSpace / 7)][topSpace % 7] == 0) {
-//         board[Math.floor(topSpace / 7)][topSpace % 7] = 1;
-//     } else {
-//         alert('TAKEN!')
-//     }
-//     console.log(board);
-
-//     function changeColor(e) {
-//         let column = e.target.columnEls;
-//         let row = [];
-
-//         for (let i = 5; i > -1; i--) {
-//             if (positions[i].children[column].style.backgroundColor == 'whitesmoke') {
-//                 row.push(positions[i].children[column]);
-//                 if (currentPlayer === 1) {
-//                     row[0].style.backgroundColor = playerOnecolor;
-//                 }
-//             }
-//         }
-//     }
-// }
 
 
 
@@ -176,7 +144,7 @@ function render() {
 }
 render();
 
-
+//--------TRYING TO SOLVE------//
 boardEl.addEventListener('click', function init() {
     let newBoard = [
         [0, 0, 0, 0, 0, 0, 0],
@@ -185,11 +153,10 @@ boardEl.addEventListener('click', function init() {
         [0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0],
-    ]; {
-        board.push(newBoard);
-    }
-})
+    ];
+    board.push(newBoard);
 
+})
 
 
 function chkLine(a, b, c, d) {
@@ -199,7 +166,7 @@ function chkLine(a, b, c, d) {
 
 function chkWinner(bd) {
     // Check down
-    for (row = 0; row < 3; row++)
+    for (r = 0; r < 3; r++)
         for (c = 0; c < 7; c++)
             if (chkLine(bd[r][c], bd[r + 1][c], bd[r + 2][c], bd[r + 3][c]))
                 return bd[r][c];
@@ -222,24 +189,5 @@ function chkWinner(bd) {
             if (chkLine(bd[r][c], bd[r - 1][c + 1], bd[r - 2][c + 2], bd[r - 3][c + 3]))
                 return bd[r][c];
 
-    console.log(chkWinner);
+    return 0;
 }
-
-// alert(chkWinner(winningCombos));
-
-
-// function findWinner() {
-//     let squares = document.querySelectorAll('#pos');
-//     for (let i = 0; i < winningCombos.length; i++) {
-//         let square = winningCombos[i];
-//         if (square.every((e) => squares[e].contains('playerOneEl'))) {
-//             alert(`${playerOne} has won`)
-//         } else if (
-//             square.every((e) => squares[e].contains('playerTwoEl'))
-//         ) {
-//             alert(`${playerTwo} has won`)
-
-//         }
-//     }
-// } console.log(findWinner);
-// findWinner();
