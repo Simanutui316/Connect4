@@ -16,9 +16,9 @@ body, html{
     cursor: pointer;
   }
 
-  /* .pos:hover {
+  .pos:hover {
     background-color: hotpink !important;
-  } */
+  }
   
   
   .board{
